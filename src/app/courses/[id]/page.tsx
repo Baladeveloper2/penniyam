@@ -43,12 +43,18 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ i
   const { id } = await params;
   let course;
 
-  if (id.startsWith('static-')) {
-    course = STATIC_COURSES.find(c => c.id === id);
-  } else {
-    course = await prisma.course.findUnique({
-      where: { id }
-    });
+  try {
+    if (id.startsWith('static-')) {
+      course = STATIC_COURSES.find(c => c.id === id);
+    } else {
+      course = await prisma.course.findUnique({
+        where: { id }
+      });
+    }
+  } catch (error) {
+    console.error("Database connection error:", error);
+    // Try to find in static courses as a last resort fallback
+    course = STATIC_COURSES.find(c => c.id === id || c.id === `static-${id}`);
   }
 
   if (!course) {

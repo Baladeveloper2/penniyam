@@ -7,11 +7,17 @@ import CourseSkeleton from "@/components/CourseSkeleton";
 export const dynamic = 'force-dynamic';
 
 export default async function CoursesPage() {
-  const dbCourses = await prisma.course.findMany({
-    orderBy: { createdAt: 'desc' }
-  });
+  let dbCourses: any[] = [];
+  try {
+    dbCourses = await prisma.course.findMany({
+      orderBy: { createdAt: 'desc' }
+    });
+  } catch (error) {
+    console.error("Database connection error:", error);
+    // Fallback to empty array, will use static courses below
+  }
 
-  // Use static courses if database is empty
+  // Use static courses if database is empty or connection failed
   const courses = dbCourses.length > 0 ? dbCourses : STATIC_COURSES as any;
 
   return (

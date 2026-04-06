@@ -12,7 +12,13 @@ export default async function AdminCoursesPage() {
     redirect("/login");
   }
 
-  const courses = await prisma.course.findMany({ orderBy: { createdAt: 'desc' } });
+  let courses: any[] = [];
+  try {
+    courses = await prisma.course.findMany({ orderBy: { createdAt: 'desc' } });
+  } catch (error) {
+    console.error("Admin Database error:", error);
+    // Continue with empty array
+  }
 
   return (
     <div className="section" style={{ minHeight: "80vh", backgroundColor: "var(--background)" }}>
