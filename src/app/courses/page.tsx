@@ -4,6 +4,8 @@ import { STATIC_COURSES } from "@/lib/courses";
 import { Suspense } from "react";
 import CourseSkeleton from "@/components/CourseSkeleton";
 
+export const dynamic = 'force-dynamic';
+
 export default async function CoursesPage() {
   const dbCourses = await prisma.course.findMany({
     orderBy: { createdAt: 'desc' }

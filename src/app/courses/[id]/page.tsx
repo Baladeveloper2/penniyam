@@ -37,19 +37,9 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
   };
 }
 
-export async function generateStaticParams() {
-  const dbCourses = await prisma.course.findMany({ select: { id: true } });
-  
-  // Combine DB IDs with static IDs for pre-rendering
-  const allIds = [
-    ...dbCourses.map(c => ({ id: c.id })),
-    ...STATIC_COURSES.map(c => ({ id: c.id }))
-  ];
-  
-  return allIds;
-}
+export const dynamic = 'force-dynamic';
 
-export default async function CourseDetailPage({ params }: { params: Promise<{ id: string }> }) {
+export async function CourseDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   let course;
 

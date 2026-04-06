@@ -7,11 +7,19 @@ const prismaClientSingleton = () => {
 }
 
 declare const globalThis: {
-  prismaGlobal: ReturnType<typeof prismaClientSingleton>;
+  prismaGlobal: ReturnType<typeof prismaClientSingleton> | undefined;
 } & typeof global;
 
-const prisma = globalThis.prismaGlobal ?? prismaClientSingleton()
+// Using a Proxy to lazily initialize PrismaClient only when it's actually used.
+// This prevents "Failed to collect page data" errors during Next.js build
+// by avoiding database connection attempts during module evaluation.
+const prisma = new Proxy({} as ReturnType<typeof prismaClientSingleton>, {
+  get(target, prop, receiver) {
+    if (!globalThis.prismaGlobal) {
+      globalThis.prismaGlobal = prismaClientSingleton();
+    }
+    return Reflect.get(globalThis.prismaGlobal, prop, receiver);
+  }
+});
 
 export default prisma
-
-if (process.env.NODE_ENV !== 'production') globalThis.prismaGlobal = prisma
