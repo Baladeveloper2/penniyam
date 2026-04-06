@@ -1,66 +1,35 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+"use client";
+
+import Hero from "@/components/Home/Hero";
+import Ecosystem from "@/components/Home/Ecosystem";
+import SuccessStories from "@/components/Home/SuccessStories";
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.tsx file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <div style={{ display: 'flex', flexDirection: 'column' }}>
+      <Hero />
+      <Ecosystem />
+      <SuccessStories />
+      
+      {/* Call to Action Section */}
+      <section className="section" style={{ 
+        textAlign: 'center', 
+        background: 'linear-gradient(to bottom, var(--background), rgba(var(--primary-h), var(--primary-s), var(--primary-l), 0.08))',
+        borderTop: '1px solid var(--border)' 
+      }}>
+        <div className="container" style={{ maxWidth: '800px' }}>
+          <span style={{ color: 'var(--primary)', fontWeight: 800, fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.2em', display: 'block', marginBottom: '1.5rem' }}>Next Steps</span>
+          <h2 style={{ fontSize: 'clamp(2.5rem, 5vw, 3.5rem)', marginBottom: '1.5rem', fontWeight: 900, lineHeight: 1.2 }}>Ready to start your journey?</h2>
+          <p style={{ color: 'var(--muted-foreground)', fontSize: '1.25rem', marginBottom: '3rem', lineHeight: 1.7 }}>
+            Join our next batch of entrepreneurs and turn your potential into power. We are here to guide you every step of the way.
           </p>
+          <div style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <Link href="/courses" className="btn btn-primary" style={{ padding: '1rem 3rem', fontSize: '1.1rem' }}>Join Academy</Link>
+            <Link href="/contact" className="btn" style={{ backgroundColor: 'var(--foreground)', color: 'white', padding: '1rem 3rem', fontSize: '1.1rem' }}>Contact Support</Link>
+          </div>
         </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+      </section>
     </div>
   );
 }
