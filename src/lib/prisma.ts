@@ -18,7 +18,11 @@ const prisma = new Proxy({} as ReturnType<typeof prismaClientSingleton>, {
     if (!globalThis.prismaGlobal) {
       globalThis.prismaGlobal = prismaClientSingleton();
     }
-    return Reflect.get(globalThis.prismaGlobal, prop, receiver);
+    const value = Reflect.get(globalThis.prismaGlobal, prop, receiver);
+    if (typeof value === 'function') {
+      return value.bind(globalThis.prismaGlobal);
+    }
+    return value;
   }
 });
 
