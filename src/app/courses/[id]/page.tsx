@@ -73,7 +73,7 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ i
   return (
     <div className="course-detail-page">
       {/* Hero Section */}
-      <section style={{ position: 'relative', height: '450px', width: '100%', overflow: 'hidden' }}>
+      <section style={{ position: 'relative', height: 'clamp(300px, 40vh, 450px)', width: '100%', overflow: 'hidden' }}>
         <Image 
           src={course.image} 
           alt={course.title} 
@@ -90,17 +90,17 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ i
           alignItems: 'center',
           justifyContent: 'center',
           color: 'white',
-          padding: '2rem'
+          padding: '1.5rem'
         }}>
           <div className="container" style={{ textAlign: 'center', maxWidth: '900px' }}>
             <span style={{ 
               color: 'var(--primary)', 
               fontWeight: 800, 
               textTransform: 'uppercase', 
-              fontSize: '0.95rem',
+              fontSize: 'clamp(0.75rem, 3vw, 0.95rem)',
               letterSpacing: '0.25em'
             }}>{course.category} Certification</span>
-            <h1 style={{ fontSize: 'clamp(3rem, 6vw, 4.5rem)', marginTop: '1.5rem', fontWeight: 900, lineHeight: 1.1 }}>{course.title}</h1>
+            <h1 style={{ fontSize: 'clamp(2rem, 7vw, 4.5rem)', marginTop: '1rem', fontWeight: 900, lineHeight: 1.1 }}>{course.title}</h1>
           </div>
         </div>
       </section>
@@ -112,40 +112,45 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ i
           gap: 5rem;
           align-items: start;
         }
-        @media (max-width: 960px) {
+        @media (max-width: 1200px) {
+          .course-layout-grid {
+            gap: 3rem;
+          }
+        }
+        @media (max-width: 1024px) {
           .course-layout-grid {
             grid-template-columns: 1fr;
             gap: 3rem;
           }
         }
       `}</style>
-      <div className="container" style={{ padding: 'clamp(2rem, 5vw, 5rem) 1rem', maxWidth: '1400px' }}>
+      <div className="container" style={{ padding: 'clamp(2rem, 5vw, 5rem) 0', maxWidth: '1400px' }}>
         <div className="course-layout-grid">
           
           {/* Main Content */}
           <div>
-            <div className="card fade-in" style={{ marginBottom: '4rem', padding: '3rem', borderLeft: '6px solid var(--primary)', backgroundColor: 'white' }}>
-              <h2 style={{ marginBottom: '1.5rem', fontSize: '2rem' }}>Course Overview</h2>
-              <p style={{ fontSize: '1.15rem', color: 'var(--muted-foreground)', lineHeight: 1.8 }}>
+            <div className="card fade-in" style={{ marginBottom: '3rem', padding: 'clamp(1.5rem, 5vw, 3rem)', borderLeft: '6px solid var(--primary)', backgroundColor: 'white' }}>
+              <h2 style={{ marginBottom: '1.5rem', fontSize: 'clamp(1.5rem, 4vw, 2rem)' }}>Course Overview</h2>
+              <p style={{ fontSize: 'clamp(1rem, 3vw, 1.15rem)', color: 'var(--muted-foreground)', lineHeight: 1.8 }}>
                 {course.description} Our curriculum focuses aggressively on practical, hands-on learning that translates directly to real-world business success in the {course.category} market.
               </p>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem', marginBottom: '5rem' }}>
-              <div className="card" style={{ padding: '2.5rem', textAlign: 'center', border: '1px solid var(--border)' }}>
-                <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>⏱️</div>
-                <h4 style={{ color: 'var(--muted-foreground)' }}>Duration</h4>
-                <p style={{ fontWeight: 800, fontSize: '1.3rem', marginTop: '0.5rem' }}>{course.duration}</p>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.5rem', marginBottom: '3rem' }}>
+              <div className="card" style={{ padding: '2rem 1.5rem', textAlign: 'center', border: '1px solid var(--border)' }}>
+                <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>⏱️</div>
+                <h4 style={{ color: 'var(--muted-foreground)', fontSize: '0.9rem' }}>Duration</h4>
+                <p style={{ fontWeight: 800, fontSize: '1.2rem', marginTop: '0.4rem' }}>{course.duration}</p>
               </div>
-              <div className="card" style={{ padding: '2.5rem', textAlign: 'center', border: '1px solid var(--border)' }}>
-                <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>🎓</div>
-                <h4 style={{ color: 'var(--muted-foreground)' }}>Outcome</h4>
-                <p style={{ fontWeight: 800, fontSize: '1.3rem', marginTop: '0.5rem' }}>{course.outcome}</p>
+              <div className="card" style={{ padding: '2rem 1.5rem', textAlign: 'center', border: '1px solid var(--border)' }}>
+                <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>🎓</div>
+                <h4 style={{ color: 'var(--muted-foreground)', fontSize: '0.9rem' }}>Outcome</h4>
+                <p style={{ fontWeight: 800, fontSize: '1.2rem', marginTop: '0.4rem' }}>{course.outcome}</p>
               </div>
             </div>
 
-            <div className="card fade-in" style={{ marginBottom: '4rem', padding: '3rem' }}>
-              <h2 style={{ marginBottom: '2.5rem', fontSize: '2rem', borderBottom: '2px solid var(--border)', paddingBottom: '1rem' }}>Course Syllabus Outline</h2>
+            <div className="card fade-in" style={{ marginBottom: '3rem', padding: 'clamp(1.5rem, 5vw, 3rem)' }}>
+              <h2 style={{ marginBottom: '2rem', fontSize: 'clamp(1.5rem, 4vw, 2rem)', borderBottom: '2px solid var(--border)', paddingBottom: '0.75rem' }}>Course Syllabus Outline</h2>
               <SyllabusAccordion syllabus={syllabus} />
             </div>
           </div>

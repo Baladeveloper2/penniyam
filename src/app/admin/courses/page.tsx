@@ -32,13 +32,13 @@ export default async function AdminCoursesPage() {
         </div>
 
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "2rem", flexWrap: "wrap", gap: "1rem" }}>
-          <h1 style={{ fontSize: "2rem", fontWeight: 800 }}>Course Database</h1>
-          <Link href="/admin/courses/new" className="btn btn-primary" style={{ padding: "0.8rem 1.5rem" }}>
+          <h1 style={{ fontSize: "clamp(1.8rem, 5vw, 2.5rem)", fontWeight: 800 }}>Course Database</h1>
+          <Link href="/admin/courses/new" className="btn btn-primary" style={{ padding: "0.8rem 1.5rem", width: "100%", textAlign: "center", maxWidth: "480px" }}>
             + Add New Course
           </Link>
         </div>
 
-        <div className="card fade-in" style={{ padding: "0", overflowX: "auto", border: "1px solid var(--border)" }}>
+        <div className="card fade-in" style={{ padding: "0", overflowX: "auto", border: "1px solid var(--border)", WebkitOverflowScrolling: "touch" }}>
           <table style={{ width: "100%", minWidth: "800px", borderCollapse: "collapse", textAlign: "left" }}>
             <thead style={{ backgroundColor: "rgba(0,0,0,0.02)" }}>
               <tr>

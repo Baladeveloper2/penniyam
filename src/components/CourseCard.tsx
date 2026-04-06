@@ -46,16 +46,16 @@ export default function CourseCard({ course, priority = false }: { course: any, 
         </div>
       </Link>
       
-      <div style={{ padding: '2.5rem', display: 'flex', flexDirection: 'column', flex: 1 }}>
+      <div style={{ padding: 'clamp(1.25rem, 4vw, 2.5rem)', display: 'flex', flexDirection: 'column', flex: 1 }}>
         <Link href={`/courses/${course.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
-          <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem', fontWeight: 800 }}>{course.title}</h3>
+          <h3 style={{ fontSize: 'clamp(1.2rem, 4vw, 1.5rem)', marginBottom: '0.75rem', fontWeight: 800 }}>{course.title}</h3>
         </Link>
-        <p style={{ color: 'var(--muted-foreground)', fontSize: '1rem', marginBottom: '2rem', flex: 1, lineHeight: 1.6 }}>{course.description}</p>
+        <p style={{ color: 'var(--muted-foreground)', fontSize: '0.95rem', marginBottom: '1.5rem', flex: 1, lineHeight: 1.6 }}>{course.description}</p>
         
-        <div style={{ borderTop: '1px solid var(--border)', paddingTop: '1.5rem', marginTop: 'auto' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.75rem', alignItems: 'center' }}>
-            <span style={{ fontSize: '0.85rem', color: 'var(--muted-foreground)', fontWeight: 500 }}>Duration</span>
-            <span style={{ fontSize: '0.9rem', fontWeight: 700, color: 'var(--primary)' }}>{course.duration}</span>
+        <div style={{ borderTop: '1px solid var(--border)', paddingTop: '1.25rem', marginTop: 'auto' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem', alignItems: 'center' }}>
+            <span style={{ fontSize: '0.8rem', color: 'var(--muted-foreground)', fontWeight: 500 }}>Duration</span>
+            <span style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--primary)' }}>{course.duration}</span>
           </div>
           <div style={{ marginBottom: '2rem' }}>
             <span style={{ fontSize: '0.85rem', color: 'var(--muted-foreground)', display: 'block', marginBottom: '0.25rem', fontWeight: 500 }}>Outcome</span>

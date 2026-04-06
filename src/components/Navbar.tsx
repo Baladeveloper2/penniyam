@@ -116,16 +116,16 @@ export default function Navbar() {
     {isMenuOpen && (
       <div style={{
         position: 'fixed',
-        top: '75px',
+        top: isScrolled ? '65px' : '75px',
         left: 0,
         right: 0,
         bottom: 0,
         backgroundColor: '#ffffff',
         zIndex: 9999,
-        padding: '2rem',
+        padding: '2rem 1.5rem',
         display: 'flex',
         flexDirection: 'column',
-        gap: '1.5rem',
+        gap: '1rem',
         animation: 'fadeIn 0.3s ease',
         overflowY: 'auto'
       }}>
@@ -134,7 +134,14 @@ export default function Navbar() {
             key={link.name} 
             href={link.href}
             onClick={() => setIsMenuOpen(false)}
-            style={{ fontSize: '1.5rem', fontWeight: 700, textDecoration: 'none', color: 'var(--foreground)' }}
+            style={{ 
+              fontSize: '1.25rem', 
+              fontWeight: 700, 
+              textDecoration: 'none', 
+              color: 'var(--foreground)',
+              padding: '0.75rem 0',
+              borderBottom: '1px solid var(--muted)'
+            }}
           >
             {link.name}
           </Link>

@@ -16,13 +16,13 @@ export default function CourseFilterGrid({ initialCourses }: { initialCourses: C
   return (
     <>
       {/* Filter Bar */}
-      <div style={{ 
-        display: 'flex', 
-        justifyContent: 'center', 
-        gap: '1rem', 
-        marginBottom: '3rem',
-        flexWrap: 'wrap'
-      }}>
+      <div 
+        className="scroll-x-mobile no-scrollbar"
+        style={{ 
+          marginBottom: '3rem',
+          width: '100%'
+        }}
+      >
         {filterButtons.map(btn => (
           <button
             key={btn}
@@ -31,9 +31,10 @@ export default function CourseFilterGrid({ initialCourses }: { initialCourses: C
             style={{
               backgroundColor: filter === btn ? 'var(--primary)' : 'var(--muted)',
               color: filter === btn ? 'white' : 'var(--foreground)',
-              fontSize: '0.9rem',
-              padding: '0.5rem 1.5rem',
-              border: filter === btn ? 'none' : '1px solid var(--border)'
+              fontSize: '0.85rem',
+              padding: '0.5rem 1.25rem',
+              border: filter === btn ? 'none' : '1px solid var(--border)',
+              flexShrink: 0
             }}
           >
             {btn}
