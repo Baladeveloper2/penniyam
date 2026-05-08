@@ -13,11 +13,9 @@ const nextConfig: NextConfig = {
   },
   serverExternalPackages: ['@prisma/client'],
   output: 'export',
+  trailingSlash: true,
   typescript: {
     ignoreBuildErrors: true,
-  },
-  eslint: {
-    ignoreDuringBuilds: true,
   },
 };
 
