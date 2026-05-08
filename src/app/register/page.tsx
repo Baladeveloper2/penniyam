@@ -1,9 +1,10 @@
 "use client";
 
 import { useState } from "react";
+import { useAuth } from "@/components/AuthContext";
+import { getApiUrl } from "@/lib/config";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { signIn } from "next-auth/react";
 
 export default function RegisterPage() {
   const [name, setName] = useState("");
@@ -12,6 +13,7 @@ export default function RegisterPage() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+  const { login } = useAuth();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -19,32 +21,23 @@ export default function RegisterPage() {
     setError("");
 
     try {
-      const res = await fetch("/api/register", {
+      const res = await fetch(getApiUrl("auth/register"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, email, password }),
       });
 
+      const data = await res.json();
+
       if (!res.ok) {
-        const data = await res.json();
         setError(data.message || "Registration failed");
         setLoading(false);
         return;
       }
 
-      // Automatically sign in after successful registration
-      const signInRes = await signIn("credentials", {
-        email,
-        password,
-        redirect: false,
-      });
-
-      if (signInRes?.error) {
-        router.push("/login");
-      } else {
-        router.push("/dashboard");
-        router.refresh();
-      }
+      // Automatically sign in after successful registration using the token from backend
+      login(email, data.token, data.user);
+      router.push("/dashboard");
     } catch (err) {
       setError("An unexpected error occurred.");
       setLoading(false);

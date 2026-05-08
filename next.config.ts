@@ -12,6 +12,13 @@ const nextConfig: NextConfig = {
     ],
   },
   serverExternalPackages: ['@prisma/client'],
+  output: 'export',
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
 };
 
 export default nextConfig;

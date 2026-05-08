@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { signIn } from "next-auth/react";
+import { useAuth } from "@/components/AuthContext";
+import { getApiUrl } from "@/lib/config";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
@@ -11,24 +12,33 @@ export default function LoginPage() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+  const { login } = useAuth();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setError("");
 
-    const res = await signIn("credentials", {
-      email,
-      password,
-      redirect: false,
-    });
+    try {
+      const res = await fetch(getApiUrl("auth/login"), {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
 
-    if (res?.error) {
-      setError("Invalid email or password");
-      setLoading(false);
-    } else {
+      const data = await res.json();
+
+      if (!res.ok) {
+        setError(data.message || "Invalid email or password");
+        setLoading(false);
+        return;
+      }
+
+      login(email, data.token, data.user);
       router.push("/dashboard");
-      router.refresh();
+    } catch (err) {
+      setError("An error occurred during login");
+      setLoading(false);
     }
   };
 

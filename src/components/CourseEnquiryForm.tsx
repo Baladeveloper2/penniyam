@@ -2,11 +2,12 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { useSession } from "next-auth/react";
+import { useAuth } from "./AuthContext";
+import { getApiUrl } from "@/lib/config";
 import { useRouter } from "next/navigation";
 
 export default function CourseEnquiryForm({ courseId, coursePrice, courseModes }: { courseId: string, coursePrice: string, courseModes: string[] }) {
-  const { data: session } = useSession();
+  const { user: session } = useAuth();
   const router = useRouter();
   const [formStatus, setFormStatus] = useState<"idle" | "submitting" | "success" | "already_enrolled">("idle");
   const [errorMsg, setErrorMsg] = useState("");
@@ -22,10 +23,10 @@ export default function CourseEnquiryForm({ courseId, coursePrice, courseModes }
     setErrorMsg("");
 
     try {
-      const res = await fetch("/api/enroll", {
+      const res = await fetch(getApiUrl("enroll"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ courseId }),
+        body: JSON.stringify({ userId: session.id, courseId }),
       });
 
       const data = await res.json();
@@ -69,7 +70,7 @@ export default function CourseEnquiryForm({ courseId, coursePrice, courseModes }
             <Link href="/dashboard" className="btn btn-primary" style={{ marginTop: '2rem', display: 'inline-block' }}>Go to Dashboard</Link>
           </div>
         ) : formStatus === 'already_enrolled' ? (
-           <div style={{ textAlign: 'center', padding: '2rem 0' }}>
+          <div style={{ textAlign: 'center', padding: '2rem 0' }}>
             <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>📚</div>
             <h3 style={{ marginBottom: "0.5rem" }}>Already Enrolled</h3>
             <p style={{ color: 'var(--muted-foreground)' }}>You already have access to this course.</p>
@@ -78,13 +79,13 @@ export default function CourseEnquiryForm({ courseId, coursePrice, courseModes }
         ) : (
           <form onSubmit={handleEnrollment} style={{ display: 'flex', flexDirection: 'column', gap: '1.2rem' }}>
             <div style={{ padding: "1rem", backgroundColor: "var(--background)", borderRadius: "var(--radius)", border: "1px solid var(--border)" }}>
-               <p style={{ fontSize: "0.9rem", color: "var(--muted-foreground)", lineHeight: 1.5 }}>
-                 {session 
-                   ? `You are logged in as ${session.user?.name}. Click below to confirm enrollment securely via your student account.` 
-                   : 'You must be logged in to securely enroll and access course materials. You will be redirected to the login page.'}
-               </p>
+              <p style={{ fontSize: "0.9rem", color: "var(--muted-foreground)", lineHeight: 1.5 }}>
+                {session
+                  ? `You are logged in as ${session.name}. Click below to confirm enrollment securely via your student account.`
+                  : 'You must be logged in to securely enroll and access course materials. You will be redirected to the login page.'}
+              </p>
             </div>
-            
+
             <button type="submit" disabled={formStatus === 'submitting'} className="btn btn-primary" style={{ width: '100%', marginTop: '0.5rem', padding: '1rem', fontWeight: 700 }}>
               {formStatus === 'submitting' ? 'Processing...' : (session ? 'Confirm SECURE Enrollment' : 'Log in to Enroll')}
             </button>
@@ -98,7 +99,7 @@ export default function CourseEnquiryForm({ courseId, coursePrice, courseModes }
       <div className="card fade-in" style={{ marginTop: '2rem', textAlign: 'center', backgroundColor: 'var(--muted)' }}>
         <h4>Need Technical Help?</h4>
         <p style={{ fontSize: '0.9rem', color: 'var(--muted-foreground)', marginBottom: '1.5rem' }}>Our IT support team is on standby.</p>
-        <Link href="tel:+919000403803" style={{ fontWeight: 800, color: 'var(--primary)', textDecoration: 'none', fontSize: '1.2rem' }}>+91 90004 03803</Link>
+        <Link href="tel:+91 9787831261" style={{ fontWeight: 800, color: 'var(--primary)', textDecoration: 'none', fontSize: '1.2rem' }}>+91 90004 03803</Link>
       </div>
     </div>
   );
