@@ -14,7 +14,7 @@ export default function Home() {
       <section style={{ 
         position: "relative", 
         overflow: "hidden", 
-        paddingBlock: "8rem 6rem",
+        paddingBlock: "5.5rem 4.5rem",
         background: "linear-gradient(135deg, #fff5f8 0%, #f6f0ff 100%)",
         borderBottom: "1px solid var(--border)"
       }}>

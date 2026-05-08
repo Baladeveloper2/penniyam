@@ -38,7 +38,7 @@ export default function RootLayout({
         <AuthProvider>
           <div className="flex-wrapper" style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
             <Navbar />
-            <main style={{ flex: 1, paddingTop: '110px' }}>{children}</main>
+            <main style={{ flex: 1, paddingTop: '75px' }}>{children}</main>
             <Footer />
           </div>
         </AuthProvider>

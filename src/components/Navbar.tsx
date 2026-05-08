@@ -81,15 +81,6 @@ export default function Navbar() {
             {isMenuOpen ? '✕' : '☰'}
           </button>
         </div>
-
-        <style jsx>{`
-        @media (max-width: 768px) {
-          .desktop-only { display: none !important; }
-        }
-        @media (min-width: 769px) {
-          .mobile-only { display: none !important; }
-        }
-      `}</style>
       </nav>
 
       {/* Mobile Menu Overlay - Escaped from Nav Stacking Context */}

@@ -25,40 +25,41 @@ export default function PenNetworkPage() {
   return (
     <div style={{ backgroundColor: "var(--background)", color: "var(--foreground)", minHeight: "100vh" }}>
       {/* Hero Section */}
-      <section style={{ 
-        position: "relative", 
-        height: "650px", 
-        width: "100%", 
-        display: "flex", 
-        alignItems: "center", 
+      <section style={{
+        position: "relative",
+        height: "540px",
+        width: "100%",
+        display: "flex",
+        alignItems: "center",
         justifyContent: "center",
         overflow: "hidden"
       }}>
-        <Image 
-          src="/pen_hero.png" 
-          alt="PEN Network Community" 
-          fill 
+        <Image
+          src="/pen_hero.png"
+          alt="PEN Network Community"
+          fill
           priority
           style={{ objectFit: "cover" }}
         />
-        <div style={{ 
-          position: "absolute", 
-          inset: 0, 
+        <div style={{
+          position: "absolute",
+          inset: 0,
           background: "linear-gradient(to right, rgba(26, 8, 46, 0.9) 0%, rgba(135, 20, 80, 0.75) 50%, rgba(0, 0, 0, 0.6) 100%)",
           display: "flex",
           alignItems: "center",
-          justifyContent: "center"
+          justifyContent: "center",
+          paddingTop: "3rem"
         }}>
           <div className="container" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "3rem", alignItems: "center" }}>
             <div className="fade-in" style={{ color: "white" }}>
-              <span style={{ 
-                backgroundColor: "rgba(255, 255, 255, 0.15)", 
+              <span style={{
+                backgroundColor: "rgba(255, 255, 255, 0.15)",
                 backdropFilter: "blur(5px)",
-                padding: "0.5rem 1.25rem", 
-                borderRadius: "100px", 
-                fontSize: "0.85rem", 
-                fontWeight: 700, 
-                textTransform: "uppercase", 
+                padding: "0.5rem 1.25rem",
+                borderRadius: "100px",
+                fontSize: "0.85rem",
+                fontWeight: 700,
+                textTransform: "uppercase",
                 letterSpacing: "2px",
                 border: "1px solid rgba(255,255,255,0.2)",
                 display: "inline-block",
@@ -66,28 +67,28 @@ export default function PenNetworkPage() {
               }}>
                 ✨ PENNIYAM ENTERPRISE NETWORK
               </span>
-              <h1 style={{ 
-                fontSize: "clamp(2.5rem, 5vw, 4rem)", 
-                fontWeight: 800, 
-                lineHeight: "1.15", 
+              <h1 style={{
+                fontSize: "clamp(2.5rem, 5vw, 4rem)",
+                fontWeight: 800,
+                lineHeight: "1.15",
                 marginBottom: "1.5rem",
                 textShadow: "0 2px 10px rgba(0,0,0,0.3)"
               }}>
                 Empowering Women <br />
-                <span style={{ 
-                  background: "linear-gradient(135deg, #ff79c6 0%, #ffb86c 100%)", 
-                  WebkitBackgroundClip: "text", 
+                <span style={{
+                  background: "linear-gradient(135deg, #ff79c6 0%, #ffb86c 100%)",
+                  WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent"
                 }}>
                   Entrepreneurs
                 </span>
               </h1>
-              <p style={{ 
-                fontSize: "clamp(1.1rem, 2vw, 1.35rem)", 
-                maxWidth: "600px", 
-                marginBottom: "2.5rem", 
+              <p style={{
+                fontSize: "clamp(1.1rem, 2vw, 1.35rem)",
+                maxWidth: "600px",
+                marginBottom: "2.5rem",
                 opacity: 0.9,
-                lineHeight: "1.6" 
+                lineHeight: "1.6"
               }}>
                 An elite, collaborative ecosystem where aspiring female leaders learn high-income crafts, build premium brands, and scale their businesses globally.
               </p>
@@ -95,11 +96,11 @@ export default function PenNetworkPage() {
                 <a href="#join-form" className="btn btn-primary" style={{ padding: "1rem 2.25rem", fontSize: "1rem" }}>
                   Join the Network
                 </a>
-                <a href="#pillars" className="btn" style={{ 
-                  padding: "1rem 2.25rem", 
-                  fontSize: "1rem", 
-                  backgroundColor: "rgba(255, 255, 255, 0.1)", 
-                  border: "1px solid rgba(255, 255, 255, 0.3)", 
+                <a href="#pillars" className="btn" style={{
+                  padding: "1rem 2.25rem",
+                  fontSize: "1rem",
+                  backgroundColor: "rgba(255, 255, 255, 0.1)",
+                  border: "1px solid rgba(255, 255, 255, 0.3)",
                   color: "white"
                 }}>
                   Explore Our Pillars
@@ -160,7 +161,7 @@ export default function PenNetworkPage() {
               <p style={{ color: "var(--muted-foreground)", fontWeight: 600, fontSize: "0.95rem" }}>Expert Business Mentors</p>
             </div>
             <div style={{ borderLeft: "1px solid var(--border)" }}>
-              <h2 style={{ fontSize: "2.5rem", fontWeight: 800, color: "var(--primary)", marginBottom: "0.25rem" }}>₹15Cr+</h2>
+              <h2 style={{ fontSize: "2.5rem", fontWeight: 800, color: "var(--primary)", marginBottom: "0.25rem" }}>₹5+</h2>
               <p style={{ color: "var(--muted-foreground)", fontWeight: 600, fontSize: "0.95rem" }}>Community Revenue Generated</p>
             </div>
             <div style={{ borderLeft: "1px solid var(--border)" }}>
@@ -186,10 +187,10 @@ export default function PenNetworkPage() {
             {/* Pillar 1 */}
             <div className="card" style={{ padding: "0", overflow: "hidden", display: "flex", flexDirection: "column" }}>
               <div style={{ position: "relative", height: "240px", width: "100%" }}>
-                <Image 
-                  src="/pen_training.png" 
-                  alt="Skill Development & Training" 
-                  fill 
+                <Image
+                  src="/pen_training.png"
+                  alt="Skill Development & Training"
+                  fill
                   style={{ objectFit: "cover" }}
                 />
               </div>
@@ -205,10 +206,10 @@ export default function PenNetworkPage() {
             {/* Pillar 2 */}
             <div className="card" style={{ padding: "0", overflow: "hidden", display: "flex", flexDirection: "column" }}>
               <div style={{ position: "relative", height: "240px", width: "100%" }}>
-                <Image 
-                  src="/naturals.png" 
-                  alt="Market Integration & Brand Acceleration" 
-                  fill 
+                <Image
+                  src="/naturals.png"
+                  alt="Market Integration & Brand Acceleration"
+                  fill
                   style={{ objectFit: "cover" }}
                 />
               </div>
@@ -224,10 +225,10 @@ export default function PenNetworkPage() {
             {/* Pillar 3 */}
             <div className="card" style={{ padding: "0", overflow: "hidden", display: "flex", flexDirection: "column" }}>
               <div style={{ position: "relative", height: "240px", width: "100%" }}>
-                <Image 
-                  src="/pen_growth.png" 
-                  alt="Leadership & Business Scale" 
-                  fill 
+                <Image
+                  src="/pen_growth.png"
+                  alt="Leadership & Business Scale"
+                  fill
                   style={{ objectFit: "cover" }}
                 />
               </div>
@@ -291,7 +292,7 @@ export default function PenNetworkPage() {
               <p style={{ color: "var(--muted-foreground)", marginBottom: "2rem" }}>
                 Apply to become an active member of the Penniyam Enterprise Network today. Our panel will review your interest and reach out within 48 business hours to assign you a personal coordinator.
               </p>
-              
+
               <div style={{ display: "grid", gap: "1.25rem" }}>
                 <div style={{ display: "flex", gap: "1rem", alignItems: "flex-start" }}>
                   <span style={{ backgroundColor: "rgba(236, 72, 153, 0.1)", color: "var(--primary)", width: "32px", height: "32px", display: "flex", alignItems: "center", justifyContent: "center", borderRadius: "100px", flexShrink: 0, fontWeight: 700, textIndent: "10px", lineHeight: "32px" }}>✓</span>
@@ -318,10 +319,10 @@ export default function PenNetworkPage() {
             </div>
 
             <div>
-              <div className="card" style={{ 
-                backgroundColor: "var(--muted)", 
+              <div className="card" style={{
+                backgroundColor: "var(--muted)",
                 border: "1px solid var(--border)",
-                padding: "3rem", 
+                padding: "3rem",
                 boxShadow: "0 10px 30px rgba(0,0,0,0.03)",
                 position: "relative"
               }}>
@@ -342,29 +343,29 @@ export default function PenNetworkPage() {
                     <form onSubmit={handleSubmit} style={{ display: "grid", gap: "1.5rem" }}>
                       <div>
                         <label style={{ display: "block", marginBottom: "0.5rem", fontWeight: 600, fontSize: "0.9rem" }}>Full Name</label>
-                        <input 
-                          type="text" 
+                        <input
+                          type="text"
                           required
                           value={formData.name}
                           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                          placeholder="Your Name" 
-                          style={{ width: "100%", padding: "0.85rem", borderRadius: "var(--radius)", border: "1px solid var(--border)", fontSize: "0.95rem" }} 
+                          placeholder="Your Name"
+                          style={{ width: "100%", padding: "0.85rem", borderRadius: "var(--radius)", border: "1px solid var(--border)", fontSize: "0.95rem" }}
                         />
                       </div>
                       <div>
                         <label style={{ display: "block", marginBottom: "0.5rem", fontWeight: 600, fontSize: "0.9rem" }}>Phone Number</label>
-                        <input 
-                          type="tel" 
+                        <input
+                          type="tel"
                           required
                           value={formData.phone}
                           onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                          placeholder="WhatsApp Number (e.g. +91 98765 43210)" 
-                          style={{ width: "100%", padding: "0.85rem", borderRadius: "var(--radius)", border: "1px solid var(--border)", fontSize: "0.95rem" }} 
+                          placeholder="WhatsApp Number (e.g. +91 98765 43210)"
+                          style={{ width: "100%", padding: "0.85rem", borderRadius: "var(--radius)", border: "1px solid var(--border)", fontSize: "0.95rem" }}
                         />
                       </div>
                       <div>
                         <label style={{ display: "block", marginBottom: "0.5rem", fontWeight: 600, fontSize: "0.9rem" }}>Existing Business Status</label>
-                        <select 
+                        <select
                           value={formData.businessStatus}
                           onChange={(e) => setFormData({ ...formData, businessStatus: e.target.value })}
                           style={{ width: "100%", padding: "0.85rem", borderRadius: "var(--radius)", border: "1px solid var(--border)", backgroundColor: "white", fontSize: "0.95rem" }}
@@ -376,7 +377,7 @@ export default function PenNetworkPage() {
                       </div>
                       <div>
                         <label style={{ display: "block", marginBottom: "0.5rem", fontWeight: 600, fontSize: "0.9rem" }}>Primary Business Interest</label>
-                        <select 
+                        <select
                           value={formData.interest}
                           onChange={(e) => setFormData({ ...formData, interest: e.target.value })}
                           style={{ width: "100%", padding: "0.85rem", borderRadius: "var(--radius)", border: "1px solid var(--border)", backgroundColor: "white", fontSize: "0.95rem" }}
@@ -390,12 +391,12 @@ export default function PenNetworkPage() {
                       </div>
                       <div>
                         <label style={{ display: "block", marginBottom: "0.5rem", fontWeight: 600, fontSize: "0.9rem" }}>Message / Growth Goals</label>
-                        <textarea 
+                        <textarea
                           value={formData.message}
                           onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                          placeholder="Tell us a bit about your goals..." 
+                          placeholder="Tell us a bit about your goals..."
                           rows={3}
-                          style={{ width: "100%", padding: "0.85rem", borderRadius: "var(--radius)", border: "1px solid var(--border)", fontSize: "0.95rem", fontFamily: "inherit" }} 
+                          style={{ width: "100%", padding: "0.85rem", borderRadius: "var(--radius)", border: "1px solid var(--border)", fontSize: "0.95rem", fontFamily: "inherit" }}
                         />
                       </div>
                       <button className="btn btn-primary" type="submit" style={{ backgroundColor: "var(--secondary)", width: "100%", padding: "1rem" }}>
